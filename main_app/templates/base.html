@@ -19,8 +19,17 @@
         </ul>
         <ul class="right">
           <li><a href="{% url 'about' %}">About</a></li>
-          <li><a href="{% url 'puffins_create' %}">Add a Puffin</a></li>
-          <li><a href="{% url 'index'%}">View All My Puffins</a></li>
+          {% if user.is_authenticated %}
+            <li><a href="{% url 'rocks_create' %}">Add a Rock</a></li>
+            <li><a href="{% url 'rocks_index' %}">View All Rocks</a></li>
+            <li><a href="{% url 'puffins_create' %}">Add a Puffin</a></li>
+            <li><a href="{% url 'index' %}">View All My Puffins</a></li>
+            <li><a href="{% url 'logout' %}">Log Out</a></li>
+            {% else %}
+            <!-- New link below -->
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            <li><a href="{% url 'login' %}">Log In</a></li>
+            {% endif %} 
         </ul>
       </div>
     </nav>
